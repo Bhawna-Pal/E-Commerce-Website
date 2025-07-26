@@ -60,7 +60,7 @@ const Slider = () => {
  }, [])
 
  return (
- <div className="relative h-screen w-full overflow-hidden">
+ <div className="relative h-[700px] w-full overflow-hidden">
  <div
  ref={carouselRef}
  className="flex h-screen w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide disableScrollbar"
@@ -69,12 +69,12 @@ const Slider = () => {
  {items.map((item, index) => (
   <div
     key={index}
-    className="flex-shrink-0 h-screen w-full snap-start flex items-center justify-center bg-cover bg-center"
+    className="flex-shrink-0 h-[700px] w-full snap-start flex items-center justify-center bg-cover bg-center"
     >
       <img src={item.bannerUrl} alt={item.Title} className='max-w-full max-h-full object-contain rounded-xl' />
-    <div className=" absolute bottom-40 left-20 bg-black bg-opacity-60 text-white p-6 rounded-2xl max-w-sm">
-      <h2 className="text-4xl font-bold mb-2">{item.Title}</h2>
-      <p className="mb-4">{item.Description}</p>
+    <div className=" absolute bottom-40 left-20 bg-black bg-opacity-90 text-white p-6 rounded-2xl max-w-sm">
+      <h2 className="text-4xl font-bold mb-2">{items[activeIndex].Title}</h2>
+      <p className="mb-4">{items[activeIndex].Description}</p>
       <a
         href={item.buttonUrl}
         className="bg-white text-black px-4 pt-4 py-2 rounded-xl hover:bg-gray-200 transition items-center"
@@ -85,7 +85,7 @@ const Slider = () => {
   </div>
 ))}
  </div>
- <div className="absolute bottom-24 left-0 right-0 flex justify-center space-x-2">
+ <div className="absolute bottom-20 left-0 right-0 flex justify-center space-x-2">
  {items.map((_, index) => (
  <div
  key={index}
