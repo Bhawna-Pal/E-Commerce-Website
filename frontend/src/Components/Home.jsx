@@ -7,7 +7,7 @@ function Home() {
 
   return (
       //  nav bar
-     <nav className='w-full bg-white shadow-md py-3 px-6 flex items-center justify-between'>
+     <nav className='w-full bg-gray-200 shadow-md py-3 px-6 flex items-center justify-between'>
       <div className='flex items-center gap-2'>
          <img className='w-10 h-10 object-contain' src="#" alt="Logo" />
       </div>

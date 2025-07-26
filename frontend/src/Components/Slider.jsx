@@ -11,8 +11,8 @@ const Slider = () => {
 
  const items = [
      {
-        Title:"Leathers",
-        Description: "Stylish leather Jackets for every season.",
+        Title:"Hoodies",
+        Description: "Stylish Hoodies for every season.",
         Category:"jacket",
         bannerUrl:"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTvmbwmwrzaCzlFI6lF97fz37Mc3YTRERePkDi36i0YjpSfqpVT5pCFo0-r1hV28vNHWTV0iWjF22fQQyO7B4p3aZLB9CZiOxVlHouCPMxROpucJ6Tou7g-jA",
         buttonUrl:"#"
@@ -25,26 +25,26 @@ const Slider = () => {
         buttonUrl:"#"
     },
     {
-        Title:"Leathers",
+        Title:"Jackets",
+        Description: "Stylish leather Jackets for every season.",
+        Category:"jacket",
+        bannerUrl:"https://image.uniqlo.com/UQ/ST3/in/imagesgoods/475378/item/ingoods_09_475378_3x4.jpg?width=369",
+        buttonUrl:"#"
+    },
+    {
+        Title:"Coat",
         Description: "Stylish leather Jackets for every season.",
         Category:"jacket",
         bannerUrl:"https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSFn4ohq-EgGAqv9nwOexiyjjeHWWFrvpU83ewUksXG7kW7NM-S6EIoa1dEVK3BFlrRiC8-AHGMS1Vclq6We4wh-jeMDUXZ40Ldjte-5yHKfdGMcbbZ_4VSWws",
         buttonUrl:"#"
     },
     {
-        Title:"Leathers",
+        Title:"Rain-Coat",
         Description: "Stylish leather Jackets for every season.",
         Category:"jacket",
         bannerUrl:"https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSFn4ohq-EgGAqv9nwOexiyjjeHWWFrvpU83ewUksXG7kW7NM-S6EIoa1dEVK3BFlrRiC8-AHGMS1Vclq6We4wh-jeMDUXZ40Ldjte-5yHKfdGMcbbZ_4VSWws",
         buttonUrl:"#"
-    },
-    {
-        Title:"Leathers",
-        Description: "Stylish leather Jackets for every season.",
-        Category:"jacket",
-        bannerUrl:"https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSFn4ohq-EgGAqv9nwOexiyjjeHWWFrvpU83ewUksXG7kW7NM-S6EIoa1dEVK3BFlrRiC8-AHGMS1Vclq6We4wh-jeMDUXZ40Ldjte-5yHKfdGMcbbZ_4VSWws",
-        buttonUrl:"#"
-    },
+    }
  ] // Placeholder numbers
 
  useEffect(() => {
@@ -69,15 +69,15 @@ const Slider = () => {
  {items.map((item, index) => (
   <div
     key={index}
-    className="flex-shrink-0 h-full w-full snap-start flex items-center justify-center bg-cover bg-center"
+    className="flex-shrink-0 h-screen w-full snap-start flex items-center justify-center bg-cover bg-center"
     >
-      <img src={item.bannerUrl} alt={item.Title} className='max-w-full max-h-full object-contain' />
-    <div className=" absolute bottom-20 left-20 bg-black bg-opacity-60 text-white p-6 rounded max-w-sm">
+      <img src={item.bannerUrl} alt={item.Title} className='max-w-full max-h-full object-contain rounded-xl' />
+    <div className=" absolute bottom-40 left-20 bg-black bg-opacity-60 text-white p-6 rounded-2xl max-w-sm">
       <h2 className="text-4xl font-bold mb-2">{item.Title}</h2>
       <p className="mb-4">{item.Description}</p>
       <a
         href={item.buttonUrl}
-        className="bg-white text-black px-4 pt-4 py-2 rounded hover:bg-gray-200 transition"
+        className="bg-white text-black px-4 pt-4 py-2 rounded-xl hover:bg-gray-200 transition items-center"
       >
         Shop Now
       </a>
@@ -85,7 +85,7 @@ const Slider = () => {
   </div>
 ))}
  </div>
- <div className="absolute bottom-8 left-0 right-0 flex justify-center space-x-2">
+ <div className="absolute bottom-24 left-0 right-0 flex justify-center space-x-2">
  {items.map((_, index) => (
  <div
  key={index}
