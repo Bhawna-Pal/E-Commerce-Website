@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import UserContext from '../Context/userContext'
+import UserContext from '../../Context/userContext'
 
 const Button = ({ selectedCategory, setSelectedCategory }) => {
   const { setUser } = useContext(UserContext)

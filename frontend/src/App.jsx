@@ -1,9 +1,12 @@
 import './index.css'
 import './App.css'
-import Home from './Components/Home'
-import Slider from './Components/Slider'
+import Home from './Components/Home/Home'
+import Slider from './Components/Home/Slider'
+
+import Button from './Components/Home/Button'
 import UserContextProvider from './Context/ContextProvider'
-import Button from './Components/Button'
+import Tees from './Components/Tees/Tees'
+
 
 function App() {
  
@@ -13,6 +16,7 @@ function App() {
       <Home/>
       <Slider/>
       <Button/>
+      <Tees/>
 
     </UserContextProvider>
   )
