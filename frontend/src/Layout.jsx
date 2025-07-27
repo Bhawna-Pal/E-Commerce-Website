@@ -7,7 +7,6 @@ function Layout() {
   return (
     <>
       <Home/>
-      <Tees/>
       <Outlet/>
       <Slider/>
     </>

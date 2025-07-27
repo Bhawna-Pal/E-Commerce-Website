@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import UserContext from '../../Context/UserContext'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import Slider from './Slider'
 import { navlinks } from '../../data/navlinks'
 import Tees from '../Tees/Tees'
@@ -17,13 +17,14 @@ function Home() {
       </div>
       <ul className=' hidden md:flex gap-6 text-sm font-semibold text-gray-700'>
         {navlinks?.map((item, index) => {
-           return <li>
-          <Link key={index} to={`${item.navlink}`}
+           return <li key={index} >
+          <NavLink to={`${item.navlinks}`}
           className={() =>
-            `hover:text-black cursor-pointer`
+            `hover:text-black cursor-pointer duration-200`
           }>
             {item.title}
-          </Link>
+            
+          </NavLink>
         </li>
         })}
         

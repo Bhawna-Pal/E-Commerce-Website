@@ -21,10 +21,11 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path='/' element={<Tees/>} />
+        <Route path='tees' element={<Tees/>} />
       </Routes>
       </BrowserRouter>
 
+      <Slider/>
     </UserContextProvider>
   )
 }
