@@ -1,76 +1,138 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import { useContext } from 'react'
-import UserContext from '../../Context/UserContext'
-import Slider from '../Home/Slider'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+// ✅ Dummy product data
+const dummyProducts = {
+  shoes: [
+    {
+      id: "s1",
+      title: "Running Shoes",
+      image: "https://via.placeholder.com/150",
+      price: 59.99,
+    },
+    {
+      id: "s2",
+      title: "Sneakers",
+      image: "https://via.placeholder.com/150",
+      price: 45.0,
+    },
+  ],
+  tees: [
+    {
+      id: "t1",
+      title: "Plain White Tee",
+      image: "https://via.placeholder.com/150",
+      price: 15.5,
+    },
+    {
+      id: "t2",
+      title: "Graphic Tee",
+      image: "https://via.placeholder.com/150",
+      price: 22.99,
+    },
+  ],
+  bags: [
+    {
+      id: "b1",
+      title: "Laptop Backpack",
+      image: "https://via.placeholder.com/150",
+      price: 39.99,
+    },
+    {
+      id: "b2",
+      title: "Travel Duffel",
+      image: "https://via.placeholder.com/150",
+      price: 55.0,
+    },
+  ],
+};
+
+// ✅ Category metadata
+const categoryData = {
+  shoes: {
+    title: "Shoes",
+    url: "shoes",
+  },
+  tees: {
+    title: "T-Shirts",
+    url: "tees",
+  },
+  bags: {
+    title: "Bags",
+    url: "bags",
+  },
+};
 
 const Product = () => {
+  const { category } = useParams(); // e.g., /products/shoes
+  const [products, setProducts] = useState([]);
+  const [filter, setFilter] = useState("");
 
-    const {setUser} = useContext(UserContext)
+  useEffect(() => {
+    const catInfo = categoryData[category];
 
-    // const location = useLocation()
-    const [products, setProducts] = useState([])
-    const [filterProduct, setFilterProduct] = useState([]) 
-    const [search, setSearch] = useState('all')
-
-     const items = [
-    { value: 'all', label: 'All' },
-    { value: 'jackets', label: 'Jackets' },
-    { value: 'hoodies', label: 'Hoodies' },
-    { value: 'raincoats', label: 'Raincoats' },
-  ]
-
-   const Api = 'https://mocki.io/v1/51c1ce38-d352-42fd-8fa6-7e59a44f4f89'
-
-   useEffect(() => {
-    const ftechProducts = async () => {
-        let apiUrl = ''
-
-        switch(Api) {
-            case 'jackets':
-            apiUrl = 'https://api.example.com/jackets'
-        }
-
-        const data = await fetch(apiUrl).then(res => res.json())
-        setProducts(data)
-        setFilterProduct(data)
+    if (!catInfo) {
+      console.error("Invalid category");
+      return;
     }
-    ftechProducts()
-   }, [Api])
 
-     const handleFilter = (item) => {
-        setSearch(item)
-        if(item === 'all') {
-            setFilterProduct(products)
-        } else {
-            const filter = products.filter(product => product.item === item)
-            setFilterProduct(filter)
-        }
-     }
+    // Simulate fetch using switch case and dummy data
+    switch (catInfo.url) {
+      case "shoes":
+        setProducts(dummyProducts.shoes);
+        break;
+      case "tees":
+        setProducts(dummyProducts.tees);
+        break;
+      case "bags":
+        setProducts(dummyProducts.bags);
+        break;
+      default:
+        setProducts([]);
+    }
+  }, [category]);
 
-    return (
-    <div>
-        <div>
-            {items.map((item, index) => 
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  return (
+    <div className="p-6">
+      <h1 className="text-3xl font-bold mb-4">
+        {categoryData[category]?.title || "Products"}
+      </h1>
+
+      <input
+        type="text"
+        placeholder="Search products..."
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+        className="border border-gray-300 p-2 rounded w-full max-w-md mb-6"
+      />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {filteredProducts.length === 0 ? (
+          <p>No products found.</p>
+        ) : (
+          filteredProducts.map((product) => (
             <div
-            key={item.value}
-            onClick={() => handleFilter(item)}
-            className={`px-4 py-2 rounded capitalize text-sm font-medium transition ${search === item ? 'bg-blue-600 text-white' : 'bg-gray-200 text-black'}`}>
-            
-            {item}
+              key={product.id}
+              className="border p-4 rounded-lg shadow hover:shadow-md transition"
+            >
+              <img
+                src={product.image}
+                alt={product.title}
+                className="h-40 w-full object-cover mb-3 rounded"
+              />
+              <h2 className="text-lg font-semibold">{product.title}</h2>
+              <p className="text-gray-600">${product.price}</p>
             </div>
-            )}
-        </div>
-        {/* <div>
-            {filterProduct.map(product => (
-               <div key={product.id} className='border rounded-lg p-4 shadow'>
-                <img src="" alt="" />
-               </div>
-
-            ))}
-        </div> */}
+          ))
+        )}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;
+
