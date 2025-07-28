@@ -6,6 +6,7 @@ import Button from './Components/Home/Button'
 import UserContextProvider from './Context/ContextProvider'
 import Tees from './Components/Tees/Tees'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Product from './Components/Product/Product'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 
       <Slider/>
       <Button/>
+      <Product/>
     </UserContextProvider>
   )
 }
